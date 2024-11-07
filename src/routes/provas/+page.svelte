@@ -8,25 +8,36 @@
   }
 </script>
 
-<h1>Provas ENEM</h1>
-<p>Volte para a tela inicial: <a href="/">home</a></p>
-
 <div>
-  <h2>Lista de Provas:</h2>
-  <ul>
+  <section class="py-5 text-start container">
+    <h1 class="text-center p-3">
+      <a class="link-secondary" aria-label="Home" href="/">
+        <i class="bi bi-house-fill"></i>
+      </a>
+      Provas
+    </h1>
+
     {#await provasPromise}
-      <p>Carregando...</p>
+      <div class="text-center spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     {:then provas}
-      {#each provas as prova}
-        <li>
-          <p>{prova.title}</p>
-          <div>
-            <a href="/questoes/{prova.year}">Abrir Prova</a>
-          </div>
-        </li>
-      {/each}
+      <ul class="list-group">
+        {#each provas as prova}
+          <li class="list-group-item bg-secondary">
+            <a
+              class="link-light text-decoration-none fw-bold text-center"
+              href="/questoes/{prova.year}"
+            >
+              <div class="row text-center">
+                {prova.title}
+              </div>
+            </a>
+          </li>
+        {/each}
+      </ul>
     {:catch error}
       <p style="color: red">erro</p>
     {/await}
-  </ul>
+  </section>
 </div>
