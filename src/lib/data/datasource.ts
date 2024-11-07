@@ -1,4 +1,5 @@
 import ProvaModel from '../domain/ProvaModel';
+import LanguageModel from '$lib/domain/LanguageModel';
 
 const baseUrl = 'https://api.enem.dev/v1/';
 
@@ -22,7 +23,11 @@ async function getProvas()  {
                 item.title,
                 item.year,
                 item.disciplines,
-                item.languages,
+                item.languages.map((language: any) => new LanguageModel(
+                        language.label,
+                        language.value,
+                    ),
+                )
             ));
 
             console.log(parsedResponse);

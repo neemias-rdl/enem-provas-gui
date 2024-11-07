@@ -1,14 +1,16 @@
+import type LanguageModel from "./LanguageModel";
+
 export default class ProvaModel {
     title: string;
     year: number;
     disciplines: object[];
-    languages: object[];
+    languages: LanguageModel[];
 
     constructor(
         title: string,
         year: number,
         disciplines: object[],
-        languages: object[],
+        languages: LanguageModel[],
     ) {
         this.title = title;
         this.year = year;
