@@ -1,2 +1,3 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<h1>ENEM API GUI - Veja as provas do ENEM</h1>
+<p>Veja as provas do enem dos últimos anos...</p>
+<a href="/provas">Provas</a>
