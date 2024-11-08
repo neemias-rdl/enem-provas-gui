@@ -43,14 +43,12 @@ async function getQuestoesByYear(year: string): Promise<QuestionModel[]> {
     const getQuestoesByYearUrl = `${baseUrl}exams/${year}/questions`;
 
     await fetch(getQuestoesByYearUrl).then(response => {
-        console.log(response);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         return response.json();
     })
     .then(data => {
-        console.log(data);
 
         parsedResponse = data.questions.map((item: any) => new QuestionModel(
             item.title,
@@ -69,8 +67,6 @@ async function getQuestoesByYear(year: string): Promise<QuestionModel[]> {
                 alternative.isCorrect
             ))
         ));
-
-        console.log(parsedResponse);
     })
 
     return parsedResponse;
