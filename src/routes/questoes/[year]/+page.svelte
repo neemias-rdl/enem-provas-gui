@@ -1,9 +1,11 @@
 <script lang="ts">
+  import Header from "$lib/presentation/components/Header.svelte";
   import { page } from "$app/stores";
   let year = $page.params.year;
 </script>
 
 <main>
+  <Header />
   <h1>Questões Da prova do ano: {year}</h1>
   <div class="filter_prova_questoes">
     <select name="Linguas" id="linguas_dropdown">
