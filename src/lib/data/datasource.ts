@@ -1,10 +1,12 @@
 import ProvaModel from '../domain/ProvaModel';
 import LanguageModel from '$lib/domain/LanguageModel';
+import QuestionModel from '$lib/domain/QuestionModel';
+import AlternativeModel from '$lib/domain/AlternativeModel';
 
 const baseUrl = 'https://api.enem.dev/v1/';
 
 
-async function getProvas()  {
+async function getProvas(): Promise<ProvaModel[]>  {
     let parsedResponse: ProvaModel[] = [];
 
     const getPovasUrl = `${baseUrl}exams`;
@@ -17,8 +19,6 @@ async function getProvas()  {
             return response.json();          
         })
         .then(data => {
-            console.log(data);
-
             parsedResponse = data.map((item: any) => new ProvaModel(
                 item.title,
                 item.year,
@@ -29,8 +29,6 @@ async function getProvas()  {
                     ),
                 )
             ));
-
-            console.log(parsedResponse);
         })
         .catch(error => {
             console.error('Error:', error);
@@ -39,4 +37,44 @@ async function getProvas()  {
     return parsedResponse;
 }
 
-export default getProvas;
+async function getQuestoesByYear(year: string): Promise<QuestionModel[]> {
+    let parsedResponse: QuestionModel[] = [];
+
+    const getQuestoesByYearUrl = `${baseUrl}exams/${year}/questions`;
+
+    await fetch(getQuestoesByYearUrl).then(response => {
+        console.log(response);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+
+        parsedResponse = data.questions.map((item: any) => new QuestionModel(
+            item.title,
+            item.index,
+            item.discipline,
+            item.language,
+            item.year,
+            item.context,
+            item.files,
+            item.correctAlternative,
+            item.alternativesIntroduction,
+            item.alternatives.map((alternative: any) => new AlternativeModel(
+                alternative.letter,
+                alternative.text,
+                alternative.file,
+                alternative.isCorrect
+            ))
+        ));
+
+        console.log(parsedResponse);
+    })
+
+    return parsedResponse;
+
+}
+
+export {getProvas, getQuestoesByYear};
