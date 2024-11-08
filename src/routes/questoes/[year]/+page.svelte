@@ -1,36 +1,15 @@
 <script lang="ts">
-  import Header from "$lib/presentation/components/Header.svelte";
+  import Header from "$lib/presentation/components/shared/Header.svelte";
   import { page } from "$app/stores";
+  import QuestionBase from "$lib/presentation/components/question/QuestionBase.svelte";
+  import { mockQuestionModel } from "$lib/tests/mocks/MockQuestionModel";
   let year = $page.params.year;
 </script>
 
 <main>
   <Header />
   <h1>Questões Da prova do ano: {year}</h1>
-  <div class="filter_prova_questoes">
-    <select name="Linguas" id="linguas_dropdown">
-      <option value="ingles">Inglês</option>
-      <option value="espanhol">Espanhol</option>
-    </select>
-
-    <select name="Disciplinas" id="disciplinas_dropdown">
-      <option value="humanas">Humanidades e Portugues</option>
-      <option value="exatas">Ciências e Matemática</option>
-      <option value="todas">Todas</option>
-    </select>
-
-    <button>Buscar Questões</button>
-  </div>
-
   <div>
-    <!-- LISTA DE QUESTÕES -->
+    <QuestionBase question={mockQuestionModel} />
   </div>
 </main>
-
-<style>
-  .filter_prova_questoes {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-  }
-</style>

@@ -12,8 +12,9 @@
       <li class="nav-item">
         <a href="/provas" class="nav-link link-light">Provas</a>
       </li>
+      <!-- TODO: REMOVE TEMP -->
       <li class="nav-item">
-        <a href="/" class="nav-link link-light">Questionario</a>
+        <a href="/questoes/2023" class="nav-link link-light">Questionario</a>
       </li>
     </ul>
   </header>

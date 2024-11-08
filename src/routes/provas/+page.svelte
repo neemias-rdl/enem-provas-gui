@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Header from "$lib/presentation/components/Header.svelte";
+  import Header from "$lib/presentation/components/shared/Header.svelte";
   import { getProvas } from "$lib";
 
   let provasPromise = $state(getProvasEvent());
