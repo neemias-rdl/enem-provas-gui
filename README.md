@@ -1,22 +1,23 @@
-# sv
+# ENEM Provas GUI
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This project aims to provide a graphical user interface for accessing data from the [ENEM API by yunger7](https://github.com/yunger7/enem-api)
 
-## Creating a project
+This project is in development, and the plans for it's MVP currently are:
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [x] List all exams
+- [ ] Solve questions from exams by:
+  - [ ] Whole exam
+  - [ ] Whole exam by language
+  - [ ] Only specific disciplines
+  - [ ] Random question
 
-```bash
-# create a new project in the current directory
-npx sv create
+This project is being developed using SvelteKit, and it's main purpose is learning and (with some luck) helping someone some day.
 
-# create a new project in my-app
-npx sv create my-app
-```
+The project depends strongly on bootstrap for it's styling, I'm not that great with CSS so that's the path I'm following.
 
-## Developing
+## Build Instructions
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Development
 
 ```bash
 npm run dev
@@ -25,7 +26,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### Production
 
 To create a production version of your app:
 
@@ -33,6 +34,4 @@ To create a production version of your app:
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+**The project is not yet ready for deployment**
