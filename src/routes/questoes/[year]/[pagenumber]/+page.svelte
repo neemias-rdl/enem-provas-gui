@@ -2,15 +2,17 @@
   import Header from "$lib/presentation/components/shared/Header.svelte";
   import { page } from "$app/stores";
   import QuestionBase from "$lib/presentation/components/question/QuestionBase.svelte";
-  import { mockQuestionModel } from "$lib/tests/mocks/MockQuestionModel";
   import { getQuestoesByYear } from "$lib";
 
   let year: string = $page.params.year;
 
+  let routePageNumber: string = $page.params.pagenumber;
+  let pageNumber = Number(routePageNumber);
+
   let questionsPromise = $state(getQuestionsByYearEvent());
 
   async function getQuestionsByYearEvent() {
-    return await getQuestoesByYear(year);
+    return await getQuestoesByYear(year, pageNumber);
   }
 </script>
 

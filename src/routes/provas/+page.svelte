@@ -28,7 +28,7 @@
             <li class="list-group-item bg-secondary">
               <a
                 class="link-light text-decoration-none fw-bold text-center"
-                href="/questoes/{prova.year}"
+                href="/questoes/{prova.year}/1"
               >
                 <div class="row text-center">
                   {prova.title}

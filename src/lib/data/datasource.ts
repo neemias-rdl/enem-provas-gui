@@ -37,10 +37,12 @@ async function getProvas(): Promise<ProvaModel[]>  {
     return parsedResponse;
 }
 
-async function getQuestoesByYear(year: string): Promise<QuestionModel[]> {
+async function getQuestoesByYear(year: string, page: number): Promise<QuestionModel[]> {
     let parsedResponse: QuestionModel[] = [];
 
-    const getQuestoesByYearUrl = `${baseUrl}exams/${year}/questions`;
+    const questoesOffset = 1 + (10 * (page - 1));
+
+    const getQuestoesByYearUrl = `${baseUrl}exams/${year}/questions?offset=${questoesOffset}`;
 
     await fetch(getQuestoesByYearUrl).then(response => {
         if (!response.ok) {
@@ -67,7 +69,9 @@ async function getQuestoesByYear(year: string): Promise<QuestionModel[]> {
                 alternative.isCorrect
             ))
         ));
-    })
+    }).catch(error => {
+        console.error('Error:', error);
+    });
 
     return parsedResponse;
 
